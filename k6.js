@@ -1,4 +1,6 @@
-// k6 run script.js
+// k6 run "nomedaclasse".js  
+// k6 run k6.js
+
 // k6 run --vus 10 --duration 30s script.js
 
 import http from 'k6/http';

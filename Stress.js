@@ -22,13 +22,23 @@ export const options = {
   },
 };
 
+const authHeaders = {
+  headers: {
+    Authorization: `Bearer ${loginRes.json('access')}`,
+  },
+}
+
 export default function () {
   const BASE_URL = "https://test-api.k6.io"; // make sure this is not production
+  check(res, { 'status was 200': (r) => r.status == 200,
+  });
   const responses = http.batch([
     ["GET", `${BASE_URL}/public/crocodiles/1/`],
     ["GET", `${BASE_URL}/public/crocodiles/2/`],
     ["GET", `${BASE_URL}/public/crocodiles/3/`],
     ["GET", `${BASE_URL}/public/crocodiles/4/`],
+    
   ]);
+  
 }
 
